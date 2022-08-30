@@ -8,8 +8,8 @@ import (
 )
 
 type config struct {
-	Bind map[string]interface{} `yaml:"bind"`
-	Server []map[string]interface{} `yaml:"server"`
+	BindAddr string `yaml:"bind"`
+	Server map[string]interface{} `yaml:"server"`
 }
 
 var configer []config
@@ -26,9 +26,11 @@ func LoadConfig() {
 	yaml.Unmarshal(b, &config)
 
 	configer = append(configer, config)
-	
 }
 
 func GetConfig() config{
+	for _, v := range configer {
+		return v
+	}
 	return configer[0]
 }

@@ -7,5 +7,6 @@ import (
 )
 
 func main() {
-	fmt.Println()
+	modules.LoadConfig()
+	fmt.Println(modules.GetConfig())
 }
